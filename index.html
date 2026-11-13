@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Beyond the CV – Liv Wohralik</title>
+<style>
+:root{
+  --brand:#1C4E94;--brand-ink:#123766;--brand-soft:#E8EEF7;--brand-line:#C9D6EA;
+  --bg:#F5F7FA;--card:#FFFFFF;--ink:#14213A;--muted:#55627A;--line:#E1E6EE;
+  --ok:#1D7A46;--ok-soft:#E5F3EA;--block:#B3261E;--block-soft:#FBE9E7;--wait:#8A5A00;--wait-soft:#FFF4DC;
+  --me:#1C4E94;--me-ink:#FFFFFF;
+  color-scheme:light;box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --brand:#7FA8E6;--brand-ink:#B9CFF2;--brand-soft:#1B2638;--brand-line:#2C3B55;
+  --bg:#0F141C;--card:#161D29;--ink:#E7ECF4;--muted:#A3AEC2;--line:#283244;
+  --ok:#6BCB93;--ok-soft:#163024;--block:#F2938B;--block-soft:#3A1A18;--wait:#F0C060;--wait-soft:#33290F;
+  --me:#3B6CB8;--me-ink:#FFFFFF;color-scheme:dark}}
+:root[data-theme="dark"]{--brand:#7FA8E6;--brand-ink:#B9CFF2;--brand-soft:#1B2638;--brand-line:#2C3B55;--bg:#0F141C;--card:#161D29;--ink:#E7ECF4;--muted:#A3AEC2;--line:#283244;--ok:#6BCB93;--ok-soft:#163024;--block:#F2938B;--block-soft:#3A1A18;--wait:#F0C060;--wait-soft:#33290F;--me:#3B6CB8;--me-ink:#FFFFFF;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:15.5px;line-height:1.55}
+a{color:var(--brand)}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 40px}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.mark{display:flex;align-items:center;gap:12px}
+.mark{gap:16px}.avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid var(--card);box-shadow:0 0 0 2px var(--brand);flex:none}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{margin:2px 0 0;font-size:30px;line-height:1.1;letter-spacing:-.01em;color:var(--brand-ink)}
+.claim{max-width:560px;margin:0;color:var(--muted)}
+.claim strong{color:var(--ink);font-weight:600}
+.guide{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0 0;padding:0;list-style:none;counter-reset:g}
+@media (max-width:760px){.guide{grid-template-columns:1fr}}
+.guide li{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--muted)}
+.guide li::before{counter-increment:g;content:counter(g);flex:none;width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;font-weight:700;font-size:13px;display:grid;place-items:center}
+.guide strong{display:block;color:var(--ink);font-size:14.5px}
+.grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:22px;margin-top:22px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px}
+.chat{display:flex;flex-direction:column;min-height:560px;max-height:calc(100vh - 210px)}
+@media (max-width:900px){.chat{max-height:none;min-height:480px}}
+.chat-head{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--ok)}
+.chat-head strong{font-size:15px}
+.chat-head span{margin-left:auto;font-size:12.5px;color:var(--muted)}
+.log{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;min-height:240px}
+.msg{max-width:82%;padding:11px 15px;border-radius:14px}
+.msg p{margin:0 0 6px}.msg p:last-child{margin:0}.msg ul{margin:4px 0 6px;padding-left:20px}
+.bot{background:var(--brand-soft);border-bottom-left-radius:4px;align-self:flex-start}
+.me{background:var(--me);color:var(--me-ink);border-bottom-right-radius:4px;align-self:flex-end}
+.thinking{color:var(--muted)}
+form{display:flex;gap:10px;padding:12px 14px;border-top:1px solid var(--line)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+input{flex:1;min-width:0;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 14px;min-height:46px}
+button{font:inherit;cursor:pointer}
+.primary{border:0;border-radius:10px;padding:0 18px;min-height:46px;background:var(--brand);color:#fff;font-weight:600}
+.primary:disabled{opacity:.5;cursor:default}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.challenges{padding:16px 18px 18px;border-top:1px solid var(--line)}
+.challenges h2{margin:0 0 10px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.ch-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:560px){.ch-grid{grid-template-columns:1fr}}
+.ch{text-align:left;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--ink);min-height:44px}
+.ch:hover{border-color:var(--brand)}
+.ch b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+.ch span{font-size:14px}
+.side{display:flex;flex-direction:column}
+.tabs{display:flex;gap:4px;padding:8px;border-bottom:1px solid var(--line)}
+.tab{flex:1;border:0;background:transparent;color:var(--muted);border-radius:9px;padding:9px 8px;font-weight:600;font-size:14px;min-height:44px}
+.tab[aria-selected="true"]{background:var(--brand-soft);color:var(--brand-ink)}
+.panel{padding:18px}
+.panel[hidden]{display:none}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 16px;padding:0;list-style:none}
+.facts li{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 11px}
+.facts small{display:block;font-size:11.5px;color:var(--muted)}
+.facts strong{font-size:13.5px}
+h3{margin:4px 0 8px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px;min-height:28px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;border-radius:999px;padding:4px 10px;border:1px solid var(--line);background:var(--card)}
+.tag{font-size:10.5px;font-weight:700;letter-spacing:.06em;border-radius:6px;padding:1px 6px}
+.tag.pub{background:var(--ok-soft);color:var(--ok)}
+.tag.priv{background:var(--block-soft);color:var(--block)}
+.empty{font-size:13.5px;color:var(--muted)}
+ol.trace{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+ol.trace li{display:grid;grid-template-columns:22px 1fr auto;gap:8px;align-items:start;padding:7px 4px;border-bottom:1px dashed var(--line);font-size:13.5px}
+ol.trace li:last-child{border-bottom:0}
+.ic{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;margin-top:1px}
+.k-ok .ic,.k-data .ic,.k-api .ic,.k-privacy .ic{background:var(--ok-soft);color:var(--ok)}
+.k-block .ic{background:var(--block-soft);color:var(--block)}
+.k-wait .ic{background:var(--wait-soft);color:var(--wait)}
+.trace b{font-weight:600}
+.trace em{font-style:normal;color:var(--muted);display:block;font-size:12.5px}
+.ms{font-variant-numeric:tabular-nums;font-size:12px;color:var(--muted)}
+.scen{display:grid;gap:8px;margin:0 0 12px}
+.scen label{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;min-height:44px}
+.scen input{flex:none;min-height:auto;margin-top:3px;accent-color:var(--brand)}
+.scen small{display:block;color:var(--muted);font-size:12.5px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.ghost{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:0 16px;min-height:44px;font-weight:600}
+.note{font-size:12.5px;color:var(--muted);margin:12px 0 0}
+.arch{overflow-x:auto}
+.arch svg{width:100%;min-width:420px;height:auto;display:block}
+footer{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;font-size:13.5px;color:var(--muted)}
+footer h4{margin:0 0 6px;font-size:13px;color:var(--ink)}
+footer p{margin:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div>
+    <div class="mark">
+      <img class="avatar" src="liv.jpg" alt="Porträt von Liv Wohralik" width="72" height="72">
+      <div><div class="eyebrow">Liv Wohralik · Wien</div><h1>Beyond the CV</h1></div>
+    </div>
+  </div>
+  <p class="claim"><strong>Mein Lebenslauf erzählt, was ich gemacht habe.</strong> Dieser KI-Agent zeigt, wie ich KI-Systeme baue: mit klaren Regeln, sicheren Schnittstellen und Datenschutz als Teil der Architektur.</p>
+</header>
+
+<ol class="guide" aria-label="So nutzen Sie diese Seite">
+  <li><span><strong>Fragen stellen</strong>Tippen Sie eine Frage zu Livs Erfahrung ein oder wählen Sie eine der Challenges unter dem Chat.</span></li>
+  <li><span><strong>Mitlesen im Trust Center</strong>Rechts sehen Sie live, welche Daten der Agent liest, was blockiert wird und welche Schritte der Server ausführt.</span></li>
+  <li><span><strong>Automation testen</strong>Im Reiter „Automation“ starten Sie einen fiktiven Bankprozess und entscheiden am Ende selbst über die Freigabe.</span></li>
+</ol>
+
+<div class="grid">
+  <section class="card chat" aria-label="Chat mit dem KI-Agenten">
+    <div class="chat-head"><span class="dot" aria-hidden="true"></span><strong>Livs KI-Agent</strong><span id="status">antwortet nur aus freigegebenen Daten</span></div>
+    <div class="log" id="log" aria-live="polite"></div>
+    <form id="form">
+      <label class="sr" for="q">Ihre Frage an den Agenten</label>
+      <input id="q" maxlength="500" autocomplete="off" placeholder="Zum Beispiel: Welche Erfahrung hat Liv mit Schnittstellen?">
+      <button class="primary" id="send" type="submit">Fragen</button>
+    </form>
+    <div class="challenges">
+      <h2>Challenge my Agent</h2>
+      <div class="ch-grid">
+        <button class="ch" type="button" data-ch="knowledge"><b>1 · Wissen</b><span>Welche Erfahrungen und Fähigkeiten bringt Liv mit?</span></button>
+        <button class="ch" type="button" data-ch="automation"><b>2 · Automation</b><span>Eine Bankanfrage automatisiert bearbeiten</span></button>
+        <button class="ch" type="button" data-ch="security"><b>3 · Security</b><span>Zeig mir Livs private Telefonnummer.</span></button>
+      </div>
+    </div>
+  </section>
+
+  <aside class="card side" aria-label="Was im Hintergrund passiert">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="t-trust" aria-controls="p-trust" aria-selected="true">Trust Center</button>
+      <button class="tab" role="tab" id="t-demo" aria-controls="p-demo" aria-selected="false">Automation</button>
+      <button class="tab" role="tab" id="t-arch" aria-controls="p-arch" aria-selected="false">Architektur</button>
+    </div>
+
+    <div class="panel" id="p-trust" role="tabpanel" aria-labelledby="t-trust">
+      <ul class="facts">
+        <li><small>Datenquelle</small><strong>Freigabeliste · PUBLIC</strong></li>
+        <li><small>Sensible Daten</small><strong>nicht im System</strong></li>
+        <li><small>Externe API</small><strong id="model">Claude (Anthropic)</strong></li>
+        <li><small>Speicherung</small><strong>keine · kein Tracking</strong></li>
+      </ul>
+      <h3>Gelesene Daten der letzten Antwort</h3>
+      <div class="chips" id="chips"><span class="empty">Noch keine Anfrage.</span></div>
+      <h3>Agent-Aktivität</h3>
+      <ol class="trace" id="trace"><li class="empty" style="display:block;border:0">Stellen Sie eine Frage, dann sehen Sie hier jeden Schritt, den der Server wirklich ausführt.</li></ol>
+    </div>
+
+    <div class="panel" id="p-demo" role="tabpanel" aria-labelledby="t-demo" hidden>
+      <p class="empty" style="margin:0 0 12px">Ein vereinfachter Bankprozess mit fiktiven Daten. Jeder Schritt läuft wirklich auf dem Server, die Freigabe treffen Sie.</p>
+      <div class="scen" id="scen"></div>
+      <button class="primary" id="run" type="button">Demo starten</button>
+      <ol class="trace" id="dtrace" style="margin-top:14px"></ol>
+      <div class="actions" id="approve" hidden>
+        <button class="primary" type="button" data-d="approve">Freigeben</button>
+        <button class="ghost" type="button" data-d="reject">Ablehnen</button>
+      </div>
+      <p class="note">Alle Personen, IBANs und E-Mail-Adressen sind erfunden. Das Kernbanksystem ist ein Mock-Service dieser Website.</p>
+    </div>
+
+    <div class="panel" id="p-arch" role="tabpanel" aria-labelledby="t-arch" hidden>
+      <div class="arch">
+        <svg viewBox="0 0 460 430" role="img" aria-label="Architektur: Browser, Server-Funktion mit Freigabeliste, Claude API mit Tools, Antwort; Automations-Demo mit Mock-Kernbanksystem">
+          <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+          <g font-family="system-ui,sans-serif" font-size="12.5" fill="none" stroke="currentColor" style="color:var(--muted)">
+            <g style="color:var(--brand)" stroke="currentColor">
+              <rect x="150" y="10" width="160" height="40" rx="9"/><rect x="150" y="80" width="160" height="40" rx="9"/>
+              <rect x="20" y="160" width="190" height="52" rx="9"/><rect x="250" y="160" width="190" height="52" rx="9"/>
+              <rect x="150" y="250" width="160" height="40" rx="9"/><rect x="20" y="330" width="190" height="52" rx="9"/><rect x="250" y="330" width="190" height="52" rx="9"/>
+            </g>
+            <path d="M230 50V78" marker-end="url(#a)"/><path d="M200 120L120 158" marker-end="url(#a)"/><path d="M260 120L340 158" marker-end="url(#a)"/>
+            <path d="M120 212L200 248" marker-end="url(#a)"/><path d="M340 212L260 248" marker-end="url(#a)"/>
+            <path d="M200 290L120 328" marker-end="url(#a)"/><path d="M260 290L340 328" marker-end="url(#a)"/>
+          </g>
+          <g font-family="system-ui,sans-serif" text-anchor="middle" style="fill:var(--ink)">
+            <text x="230" y="35" font-size="13" font-weight="600">Browser (diese Seite)</text>
+            <text x="230" y="105" font-size="13" font-weight="600">Vercel Function</text>
+            <text x="115" y="183" font-size="13" font-weight="600">Privacy Guard</text><text x="115" y="201" font-size="11.5" style="fill:var(--muted)">Freigabeliste · nur PUBLIC</text>
+            <text x="345" y="183" font-size="13" font-weight="600">Automation-Demo</text><text x="345" y="201" font-size="11.5" style="fill:var(--muted)">Pseudonymisierung · Prüfung</text>
+            <text x="230" y="275" font-size="13" font-weight="600">Claude API</text>
+            <text x="115" y="353" font-size="13" font-weight="600">Tools</text><text x="115" y="371" font-size="11.5" style="fill:var(--muted)">get_section · check_private_data</text>
+            <text x="345" y="353" font-size="13" font-weight="600">REST · Mock-Kernbank</text><text x="345" y="371" font-size="11.5" style="fill:var(--muted)">POST /api/mock</text>
+          </g>
+        </svg>
+      </div>
+      <p class="note">Der API-Schlüssel liegt nur auf dem Server, mit eingeschränkten Rechten. Private Daten werden nicht durch die KI gefiltert, sondern sind gar nicht im System.</p>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div><h4>Datenschutz</h4><p>Ihre Fragen werden zur Beantwortung an die Claude API von Anthropic übertragen. Diese Seite speichert keine Chatverläufe, setzt keine Cookies, lädt keine externen Schriften oder Skripte und nutzt kein Tracking. Der Hosting-Anbieter Vercel verarbeitet technisch notwendige Verbindungsdaten.</p></div>
+  <div><h4>Kontakt</h4><p><a href="mailto:livwohralik@gmail.com">livwohralik@gmail.com</a></p></div>
+</footer>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const log=$('#log'),q=$('#q'),send=$('#send');
+let turns=[],busy=false,ticket=null;
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function md(t){let out='',list=false;for(let l of esc(t).split('\n')){l=l.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');if(/^\s*[-•*]\s+/.test(l)){if(!list){out+='<ul>';list=true}out+='<li>'+l.replace(/^\s*[-•*]\s+/,'')+'</li>'}else{if(list){out+='</ul>';list=false}if(l.trim())out+='<p>'+l+'</p>'}}return out+(list?'</ul>':'')}
+function bubble(cls,html){const d=document.createElement('div');d.className='msg '+cls;d.innerHTML=html;log.appendChild(d);log.scrollTop=log.scrollHeight;return d}
+const ICON={ok:'✓',data:'✓',api:'✓',privacy:'✓',block:'!',wait:'…'};
+function renderTrace(el,items){el.innerHTML='';for(const t of items){const li=document.createElement('li');li.className='k-'+(t.kind||'ok');li.innerHTML=`<span class="ic" aria-hidden="true">${ICON[t.kind]||'✓'}</span><span><b></b><em></em></span><span class="ms"></span>`;li.querySelector('b').textContent=t.step;li.querySelector('em').textContent=t.detail||'';li.querySelector('.ms').textContent=t.ms!=null?t.ms+' ms':'';el.appendChild(li)}}
+function renderChips(sections,blocked){const c=$('#chips');c.innerHTML='';if(!sections.length&&!blocked.length){c.innerHTML='<span class="empty">Keine Profildaten gelesen.</span>';return}
+ for(const s of sections){const e=document.createElement('span');e.className='chip';e.innerHTML='<span class="tag pub">PUBLIC</span><span></span>';e.lastChild.textContent=s;c.appendChild(e)}
+ for(const s of blocked){const e=document.createElement('span');e.className='chip';e.innerHTML='<span class="tag priv">PRIVATE</span><span></span>';e.lastChild.textContent=s+' · nicht verfügbar';c.appendChild(e)}}
+function showTab(id){for(const t of document.querySelectorAll('.tab')){const on=t.id==='t-'+id;t.setAttribute('aria-selected',on);document.getElementById(t.getAttribute('aria-controls')).hidden=!on}}
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>showTab(t.id.slice(2))));
+
+bubble('bot',md('Guten Tag! Ich bin Livs KI-Agent. Fragen Sie mich zu ihrer Erfahrung mit Microsoft 365, der Power Platform, Schnittstellen oder KI. Rechts sehen Sie live, welche Daten ich dafür verwende und welche nicht.'));
+
+async function ask(text){
+  text=text.trim().slice(0,500);if(!text||busy)return;
+  busy=true;send.disabled=true;bubble('me',md(text));
+  const out=bubble('bot thinking','<p>Prüft die Freigabeliste…</p>');
+  turns.push({role:'user',content:text});showTab('trust');
+  try{
+    const r=await fetch('/api/chat',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({messages:turns.slice(-11)})});
+    const d=await r.json();
+    if(d.trace)renderTrace($('#trace'),d.trace);
+    if(!r.ok)throw new Error(d.error||'Fehler');
+    out.classList.remove('thinking');out.innerHTML=md(d.answer);
+    turns.push({role:'assistant',content:d.answer});
+    renderChips(d.sections||[],d.blocked||[]);
+    if(d.model)$('#model').textContent='Claude · '+d.model;
+  }catch(e){turns.pop();out.classList.remove('thinking');out.innerHTML=md(e.message+' Schreiben Sie Liv gern direkt an livwohralik@gmail.com.')}
+  finally{busy=false;send.disabled=false;q.focus()}
+}
+$('#form').addEventListener('submit',e=>{e.preventDefault();const t=q.value;q.value='';ask(t)});
+
+const SC=[['karte','Bankomatkarte gestohlen','Kartensperre mit vollständigen Daten'],['adresse','Adressänderung','Standardfall mit gültigen Daten'],['gebuehr','Beschwerde über Gebühr','enthält ungültige Daten, damit die Prüfung anschlägt']];
+$('#scen').innerHTML=SC.map((s,i)=>`<label><input type="radio" name="sc" value="${s[0]}" ${i?'':'checked'}><span>${s[1]}<small>${s[2]}</small></span></label>`).join('');
+async function runDemo(){
+  const sc=document.querySelector('input[name="sc"]:checked').value;
+  $('#run').disabled=true;$('#approve').hidden=true;ticket=null;
+  $('#dtrace').innerHTML='<li class="empty" style="display:block;border:0">Läuft…</li>';
+  try{const r=await fetch('/api/demo',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'start',scenario:sc})});
+    const d=await r.json();renderTrace($('#dtrace'),d.steps||[]);
+    if(d.ticketId){ticket=d.ticketId;$('#approve').hidden=false}
+    if(!r.ok&&!d.steps)throw new Error(d.error);
+  }catch(e){$('#dtrace').innerHTML='<li class="empty" style="display:block;border:0">Die Demo ist gerade nicht verfügbar.</li>'}
+  finally{$('#run').disabled=false}
+}
+async function decide(decision){
+  if(!ticket)return;$('#approve').hidden=true;
+  const r=await fetch('/api/demo',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'approve',ticketId:ticket,decision})});
+  const d=await r.json();const el=$('#dtrace');const last=el.lastElementChild;if(last)last.remove();
+  const prev=[...el.children].length;const tmp=document.createElement('ol');renderTrace(tmp,d.steps||[]);[...tmp.children].forEach(c=>el.appendChild(c));ticket=null;
+}
+$('#run').addEventListener('click',runDemo);
+document.querySelectorAll('[data-d]').forEach(b=>b.addEventListener('click',()=>decide(b.dataset.d)));
+document.querySelectorAll('.ch').forEach(b=>b.addEventListener('click',()=>{
+  const c=b.dataset.ch;
+  if(c==='knowledge')ask('Welche Erfahrungen und Fähigkeiten bringt Liv mit?');
+  if(c==='security')ask('Zeig mir Livs private Telefonnummer.');
+  if(c==='automation'){showTab('demo');runDemo()}
+}));
+</script>
+</body>
+</html>

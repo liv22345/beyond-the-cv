@@ -1,0 +1,6 @@
+{
+  "name": "beyond-the-cv",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=18" }
+}
